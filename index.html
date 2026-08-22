@@ -112,6 +112,10 @@
       box-shadow: 0 6px 25px rgba(0, 245, 212, 0.5);
     }
 
+    /* Device Visibility Toggle Control */
+    .mobile-only { display: none !important; }
+    .pc-only { display: block; }
+
     /* ==========================================================================
        2. HEADER
        ========================================================================== */
@@ -166,7 +170,6 @@
       font-size: 0.9rem;
     }
 
-    /* Mobile Hamburger Menu */
     .menu-toggle {
       display: none;
       font-size: 1.5rem;
@@ -210,7 +213,6 @@
       word-break: keep-all;
     }
 
-    /* Dynamic background graphic element */
     .hero-glow {
       position: absolute;
       top: 50%;
@@ -603,7 +605,7 @@
     }
 
     /* ==========================================================================
-       9. RESPONSIVE DESIGN (MOBILE & TABLET)
+       9. RESPONSIVE DESIGN (MOBILE OPTIMIZED)
        ========================================================================== */
     @media (max-width: 992px) {
       .hero-title { font-size: 2.75rem; }
@@ -612,8 +614,16 @@
     }
 
     @media (max-width: 768px) {
+      /* Device Visibility Switch */
+      .mobile-only { display: block !important; }
+      .pc-only { display: none !important; }
+
+      .section-padding { padding: 60px 0; }
+      .section-title { font-size: 1.75rem; margin-bottom: 0.5rem; }
+      .section-desc { font-size: 0.95rem; margin-bottom: 2rem; }
+
+      /* Mobile Navigation */
       .menu-toggle { display: block; }
-      
       .nav-menu {
         position: fixed;
         top: 80px;
@@ -628,31 +638,47 @@
         transition: var(--transition);
       }
 
-      .nav-menu.active {
-        left: 0;
-      }
-
+      .nav-menu.active { left: 0; }
       .header-cta { display: none; }
 
-      .hero-title { font-size: 2.1rem; }
-      .hero-subtitle { font-size: 1.1rem; }
+      /* Mobile Hero */
+      #hero { min-height: 550px; height: auto; padding: 120px 0 80px 0; }
+      .hero-title { font-size: 2.1rem; margin-bottom: 16px; }
+      .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
 
-      .health-grid { grid-template-columns: 1fr; }
+      /* Mobile Section 1: About */
+      .about-intro { margin-bottom: 40px; }
+      .about-highlight { font-size: 1.3rem; margin-bottom: 16px; }
+      .value-card { padding: 24px 20px; }
+      .value-icon { width: 48px; height: 48px; font-size: 1.25rem; margin-bottom: 16px; }
+      .value-title { font-size: 1.15rem; margin-bottom: 8px; }
+      .value-subtitle { margin-bottom: 8px; font-size: 0.85rem; }
 
-      /* Timeline Mobile View */
-      .timeline::before { left: 20px; }
+      /* Mobile Section 2: Cards */
+      .health-grid { grid-template-columns: 1fr; gap: 16px; }
+      .health-img { height: 140px; font-size: 2.2rem; }
+      .health-body { padding: 16px; }
+      .health-card-title { font-size: 1.1rem; }
+
+      /* Mobile Section 3: Timeline */
+      .timeline::before { left: 15px; }
       .timeline-item {
         width: 100%;
-        padding-left: 50px;
+        padding-left: 40px;
         padding-right: 0;
         text-align: left !important;
+        margin-bottom: 20px;
       }
       .timeline-item:nth-child(even) { left: 0; }
-      .timeline-dot { left: 10px !important; }
+      .timeline-dot { left: 5px !important; top: 20px; width: 16px; height: 16px; }
+      .timeline-content { padding: 20px; }
 
-      .contact-wrapper { padding: 30px 20px; }
-      .form-grid { grid-template-columns: 1fr; }
+      /* Mobile Section 4: Contact */
+      .contact-wrapper { padding: 24px 16px; }
+      .form-grid { grid-template-columns: 1fr; gap: 12px; }
       .form-group.full-width { grid-column: span 1; }
+      .form-input, .form-textarea { padding: 12px; font-size: 0.95rem; }
+      .form-textarea { min-height: 100px; }
     }
   </style>
 </head>
@@ -683,7 +709,7 @@
   </header>
 
   <!-- ==========================================================================
-     HERO SECTION (MAIN TOP)
+     HERO SECTION
      ========================================================================== -->
   <section id="hero">
     <div class="hero-glow"></div>
@@ -695,13 +721,15 @@
   </section>
 
   <!-- ==========================================================================
-     SECTION 1: ABOUT MINT ENTERTAINMENT & CORE VALUES
+     SECTION 1: ABOUT & CORE VALUES
      ========================================================================== -->
   <section id="about" class="section-padding">
     <div class="container">
       <div class="about-intro">
         <h2 class="about-highlight">"몸과 마음, 삶을 아우르는 상쾌한 지혜의 시작"</h2>
-        <div class="about-text">
+        
+        <!-- PC 텍스트 -->
+        <div class="about-text pc-only">
           <p>
             민트엔터테인먼트(Mint Entertainment)는 현대 과학의 데이터와 인문학적 통찰을 융합하여, 당신의 삶에 맑고 선명한 변화를 선물하는 융합 헬스케어·교육 콘텐츠 전문 기업입니다.
           </p>
@@ -712,6 +740,13 @@
             민트엔터테인먼트는 각 분야 최고 전문가들과 함께 깊이 있고 실용적인 세미나 및 교육 프로그램을 제공합니다. 민트의 상쾌한 바람처럼, 당신의 일상과 비즈니스에 새로운 활력과 지혜를 선사하겠습니다.
           </p>
         </div>
+
+        <!-- 모바일 가독성 중심 요약 텍스트 -->
+        <div class="about-text mobile-only">
+          <p style="font-weight: 500; font-size: 1.05rem;">
+            데이터 기반의 <span class="mint-text">스마트 헬스케어</span>와 <span class="mint-text">인문·뇌과학</span>적 통찰을 융합하여, 몸과 마음의 완벽한 밸런스를 완성하는 통합 라이프케어 솔루션입니다.
+          </p>
+        </div>
       </div>
 
       <!-- Core Values -->
@@ -720,21 +755,24 @@
           <div class="value-icon"><i class="fa-solid fa-microchip"></i></div>
           <h3 class="value-title">Science & Tech</h3>
           <span class="value-subtitle">스마트 헬스케어</span>
-          <p class="value-desc">혈관 측정 데이터, 스마트침 등 첨단 기법을 통해 몸의 신호를 정확히 읽고 관리합니다.</p>
+          <p class="value-desc pc-only">혈관 측정 데이터, 스마트침 등 첨단 기법을 통해 몸의 신호를 정확히 읽고 관리합니다.</p>
+          <p class="value-desc mobile-only">혈관 측정 및 스마트침 데이터를 활용해 신체 신호를 정확히 분석합니다.</p>
         </div>
 
         <div class="value-card">
           <div class="value-icon"><i class="fa-solid fa-brain"></i></div>
           <h3 class="value-title">Insight & Mind</h3>
           <span class="value-subtitle">뇌과학 & 인문학</span>
-          <p class="value-desc">뇌의 메커니즘을 이해하고 인문학적 질문을 던지며 스스로를 깊이 있게 탐구합니다.</p>
+          <p class="value-desc pc-only">뇌의 메커니즘을 이해하고 인문학적 질문을 던지며 스스로를 깊이 있게 탐구합니다.</p>
+          <p class="value-desc mobile-only">뇌 메커니즘 이해와 인문학적 탐구로 내면의 중심을 세웁니다.</p>
         </div>
 
         <div class="value-card">
           <div class="value-icon"><i class="fa-solid fa-yin-yang"></i></div>
           <h3 class="value-title">Harmony & Balance</h3>
           <span class="value-subtitle">동양학 & 라이프</span>
-          <p class="value-desc">명리학과 동양의 지혜를 현대적 언어로 풀어내어 인생의 균형과 방향성을 제시합니다.</p>
+          <p class="value-desc pc-only">명리학과 동양의 지혜를 현대적 언어로 풀어내어 인생의 균형과 방향성을 제시합니다.</p>
+          <p class="value-desc mobile-only">현대적으로 재해석한 동양의 지혜로 인생의 최적 방향을 제시합니다.</p>
         </div>
       </div>
     </div>
@@ -746,15 +784,17 @@
   <section id="smart-health" class="section-padding">
     <div class="container">
       <h2 class="section-title">스마트 헬스 솔루션</h2>
-      <p class="section-desc">첨단 기술 기반의 객관적 데이터 분석으로 정밀한 신체 상태 측정을 제공합니다.</p>
+      <p class="section-desc pc-only">첨단 기술 기반의 객관적 데이터 분석으로 정밀한 신체 상태 측정을 제공합니다.</p>
+      <p class="section-desc mobile-only">데이터 기반 정밀 측정으로 신체 균형을 찾아드립니다.</p>
 
       <div class="health-grid">
         <div class="health-card">
           <div class="health-img"><i class="fa-solid fa-heart-pulse"></i></div>
           <div class="health-body">
             <span class="health-tag">스마트침</span>
-            <h3 class="health-card-title">디지털 자극 치료 솔루션</h3>
-            <p class="health-card-desc">미세 전류 기반의 스마트침 기기를 활용하여 통증 완화 및 생체 에너지 활성화를 유도합니다.</p>
+            <h3 class="health-card-title">디지털 자극 치료</h3>
+            <p class="health-card-desc pc-only">미세 전류 기반의 스마트침 기기를 활용하여 통증 완화 및 생체 에너지 활성화를 유도합니다.</p>
+            <p class="health-card-desc mobile-only">미세 전류 기술로 통증 완화 및 생체 에너지를 활성화합니다.</p>
           </div>
         </div>
 
@@ -762,8 +802,9 @@
           <div class="health-img"><i class="fa-solid fa-wave-square"></i></div>
           <div class="health-body">
             <span class="health-tag">혈관 측정</span>
-            <h3 class="health-card-title">정밀 혈관 탄력도 진단</h3>
-            <p class="health-card-desc">광학 센서 기술로 맥파 패턴을 분석하여 혈관 나이와 경화도를 1분 내에 측정합니다.</p>
+            <h3 class="health-card-title">혈관 탄력도 진단</h3>
+            <p class="health-card-desc pc-only">광학 센서 기술로 맥파 패턴을 분석하여 혈관 나이와 경화도를 1분 내에 측정합니다.</p>
+            <p class="health-card-desc mobile-only">1분 광학 측정으로 혈관 나이와 경화도를 정밀 진단합니다.</p>
           </div>
         </div>
 
@@ -771,8 +812,9 @@
           <div class="health-img"><i class="fa-solid fa-chart-line"></i></div>
           <div class="health-body">
             <span class="health-tag">데이터 리포트</span>
-            <h3 class="health-card-title">실시간 바이오 리듬 분석</h3>
-            <p class="health-card-desc">측정된 생체 데이터를 AI 알고리즘으로 누적 관리하여 맞춤형 웰니스 가이드를 제공합니다.</p>
+            <h3 class="health-card-title">바이오 리듬 분석</h3>
+            <p class="health-card-desc pc-only">측정된 생체 데이터를 AI 알고리즘으로 누적 관리하여 맞춤형 웰니스 가이드를 제공합니다.</p>
+            <p class="health-card-desc mobile-only">AI 알고리즘 분석을 통한 개인 맞춤형 웰니스 리포트 제공.</p>
           </div>
         </div>
 
@@ -780,8 +822,9 @@
           <div class="health-img"><i class="fa-solid fa-user-doctor"></i></div>
           <div class="health-body">
             <span class="health-tag">맞춤 케어</span>
-            <h3 class="health-card-title">전문가 1:1 디바이스 코칭</h3>
-            <p class="health-card-desc">전문 코칭 인력이 데이터 분석 결과를 기반으로 일상 속 신체 관리 프로그램을 가이드합니다.</p>
+            <h3 class="health-card-title">전문가 디바이스 코칭</h3>
+            <p class="health-card-desc pc-only">전문 코칭 인력이 데이터 분석 결과를 기반으로 일상 속 신체 관리 프로그램을 가이드합니다.</p>
+            <p class="health-card-desc mobile-only">측정 데이터를 바탕으로 전문 코치가 일상 관리를 지도합니다.</p>
           </div>
         </div>
 
@@ -789,8 +832,9 @@
           <div class="health-img"><i class="fa-solid fa-bolt"></i></div>
           <div class="health-body">
             <span class="health-tag">자율신경</span>
-            <h3 class="health-card-title">스트레스 & 자율신경 검사</h3>
-            <p class="health-card-desc">심수축 변이도(HRV) 분석을 통해 교감/부교감 신경의 균형 상태와 누적 스트레스를 측정합니다.</p>
+            <h3 class="health-card-title">스트레스 검사</h3>
+            <p class="health-card-desc pc-only">심수축 변이도(HRV) 분석을 통해 교감/부교감 신경의 균형 상태와 누적 스트레스를 측정합니다.</p>
+            <p class="health-card-desc mobile-only">HRV 진단으로 자율신경 균형 및 스트레스 지수를 측정합니다.</p>
           </div>
         </div>
 
@@ -799,7 +843,8 @@
           <div class="health-body">
             <span class="health-tag">기업 워크숍</span>
             <h3 class="health-card-title">임직원 헬스케어 부스</h3>
-            <p class="health-card-desc">기업 현장에 직접 방문하여 혈관 및 스트레스를 진단해주는 출장형 웰니스 프로그램입니다.</p>
+            <p class="health-card-desc pc-only">기업 현장에 직접 방문하여 혈관 및 스트레스를 진단해주는 출장형 웰니스 프로그램입니다.</p>
+            <p class="health-card-desc mobile-only">기업 방문 현장 측정을 통한 맞춤형 출장 웰니스 서비스.</p>
           </div>
         </div>
       </div>
@@ -812,15 +857,17 @@
   <section id="seminar" class="section-padding">
     <div class="container">
       <h2 class="section-title">인문 & 뇌과학 커리큘럼</h2>
-      <p class="section-desc">동양의 지혜와 현대 뇌과학의 결합으로 완성되는 4단계 통합 라이프 세미나</p>
+      <p class="section-desc pc-only">동양의 지혜와 현대 뇌과학의 결합으로 완성되는 4단계 통합 라이프 세미나</p>
+      <p class="section-desc mobile-only">뇌과학과 동양 지혜를 결합한 4단계 라이프 커리큘럼</p>
 
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-step">STEP 01</div>
-            <h3 class="timeline-title">현대 뇌과학으로 본 메타인지</h3>
-            <p class="timeline-desc">뇌의 신경 가소성 원리를 바탕으로 나의 사고 패턴을 객관적으로 인지하고 고정관념을 깨뜨리는 신호탄을 쏩니다.</p>
+            <h3 class="timeline-title">뇌과학과 메타인지</h3>
+            <p class="timeline-desc pc-only">뇌의 신경 가소성 원리를 바탕으로 나의 사고 패턴을 객관적으로 인지하고 고정관념을 깨뜨리는 신호탄을 쏩니다.</p>
+            <p class="timeline-desc mobile-only">뇌 가소성 원리로 사고 패턴을 객관적으로 확장합니다.</p>
           </div>
         </div>
 
@@ -828,8 +875,9 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-step">STEP 02</div>
-            <h3 class="timeline-title">인문학적 통찰과 자기 탐구</h3>
-            <p class="timeline-desc">동서양 철학적 질문을 통해 삶의 본질적인 가치를 재정의하고, 단단한 내면의 중심을 확립합니다.</p>
+            <h3 class="timeline-title">인문학적 자기 탐구</h3>
+            <p class="timeline-desc pc-only">동서양 철학적 질문을 통해 삶의 본질적인 가치를 재정의하고, 단단한 내면의 중심을 확립합니다.</p>
+            <p class="timeline-desc mobile-only">철학적 본질 질의를 통해 내면의 중심을 세웁니다.</p>
           </div>
         </div>
 
@@ -837,8 +885,9 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-step">STEP 03</div>
-            <h3 class="timeline-title">동양 명리학의 현대적 재해석</h3>
-            <p class="timeline-desc">운명의 결정론이 아닌, 데이터 기반의 상생 흐름을 다루어 자신의 타고난 기질과 최적의 타이밍을 통찰합니다.</p>
+            <h3 class="timeline-title">명리학의 현대적 재해석</h3>
+            <p class="timeline-desc pc-only">운명의 결정론이 아닌, 데이터 기반의 상생 흐름을 다루어 자신의 타고난 기질과 최적의 타이밍을 통찰합니다.</p>
+            <p class="timeline-desc mobile-only">상생 데이터 분석으로 나만의 기질과 타이밍을 통찰합니다.</p>
           </div>
         </div>
 
@@ -846,8 +895,9 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-step">STEP 04</div>
-            <h3 class="timeline-title">통합 라이프 밸런스 설계</h3>
-            <p class="timeline-desc">신체 데이터와 정신적 통찰을 하나로 연결하여 실생활과 비즈니스에 즉각 적용 가능한 체계적 행동 로드맵을 구축합니다.</p>
+            <h3 class="timeline-title">통합 라이프 밸런스</h3>
+            <p class="timeline-desc pc-only">신체 데이터와 정신적 통찰을 하나로 연결하여 실생활과 비즈니스에 즉각 적용 가능한 체계적 행동 로드맵을 구축합니다.</p>
+            <p class="timeline-desc mobile-only">신체·정신 통찰을 연결해 행동 로드맵을 완성합니다.</p>
           </div>
         </div>
       </div>
@@ -860,7 +910,8 @@
   <section id="contact" class="section-padding">
     <div class="container">
       <h2 class="section-title">상담 및 서비스 문의</h2>
-      <p class="section-desc">민트엔터테인먼트의 맞춤형 융합 솔루션으로 삶의 질을 높여보세요.</p>
+      <p class="section-desc pc-only">민트엔터테인먼트의 맞춤형 융합 솔루션으로 삶의 질을 높여보세요.</p>
+      <p class="section-desc mobile-only">맞춤형 융합 솔루션 상담을 신청하세요.</p>
 
       <div class="contact-wrapper">
         <form id="contactForm" onsubmit="handleSubmit(event)">
@@ -882,7 +933,7 @@
 
             <div class="form-group full-width">
               <label for="message" class="form-label">문의 내용</label>
-              <textarea id="message" class="form-textarea" placeholder="관심 있는 서비스 분야(스마트 헬스, 뇌과학/인문학 세미나 등) 및 문의사항을 자유롭게 남겨주세요." required></textarea>
+              <textarea id="message" class="form-textarea" placeholder="관심 있는 서비스 분야 및 문의사항을 남겨주세요." required></textarea>
             </div>
           </div>
 
@@ -923,7 +974,6 @@
      JAVASCRIPT
      ========================================================================== -->
   <script>
-    // 1. Mobile Menu Toggle Logic
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -939,7 +989,6 @@
       }
     });
 
-    // Close mobile menu on menu item click
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -949,7 +998,6 @@
       });
     });
 
-    // 2. Contact Form Submit Event Handling
     function handleSubmit(event) {
       event.preventDefault();
       const name = document.getElementById('name').value;
